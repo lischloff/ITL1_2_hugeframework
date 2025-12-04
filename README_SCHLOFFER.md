@@ -1,0 +1,98 @@
+# ITL1_2_aufgabe_hugeframework
+Author: Schloffer Lisa | 2025/26
+
+## Aus welchen Bausteinen besteht das Framework?
+Aus:
+Config
+Core
+Controller
+Model
+View
+Public
+DB
+
+## Wie sieht die DB aus
+Die Datenbank vom Huge Framework ist relationale SQL-basiert und sehr einfach gehalten. Typischerweise gibt es:
+
+Users/Tables für Benutzer-Accounts
+
+Sessions für Login-Sessions
+
+Config/Settings für Framework-Einstellungen
+
+
+## Wozu dient der public Ordner?
+Enthält alles, was öffentlich zugänglich ist (CSS, JS, Bilder, Fonts).
+index.php im public-Ordner ist meist der Front Controller, der alle Requests weiterleitet.
+
+## Beschreibe folgende Bausteine:
+Config → enthält Konfigurationsdateien (Datenbank, Pfade, Einstellungen)
+
+Core → Kern des Frameworks, z. B. Router, Basis-Controller, Basis-Model
+
+Controller → steuert die Logik, empfängt Requests, ruft Models auf und gibt Views aus
+
+Model → Schnittstelle zur Datenbank, Geschäftslogik, Datenabfragen
+
+View → Templates, HTML-Ausgabe
+
+## Wie sieht der Konstruktor in PHP Klassen aus?
+```
+class User {
+    public function __construct($name) {
+        $this->name = $name;
+    }
+}
+```
+
+## Wozu dient die Variable $this?
+
+$this referenziert die aktuelle Instanz der Klasse.
+
+
+## Vorteile der Verwendung von OOP in PHP
+
+Strukturierung: Bessere Organisation von Code
+
+Wiederverwendbarkeit: Klassen und Methoden können mehrfach genutzt werden
+
+Kapselung: Zugriff auf Daten kontrollierbar
+
+Erweiterbarkeit: Vererbung und Polymorphismus
+
+Lesbarkeit: Klarere Trennung von Funktionalitäten
+
+
+## Datenkapselungsmethoden in PHP
+
+public → von überall zugänglich
+
+protected → nur innerhalb der Klasse und Unterklassen
+
+private → nur innerhalb der Klasse selbst
+
+## Wie sehen abstrakte Klassen aus?
+
+```
+abstract class Animal {
+    abstract public function makeSound();
+
+    public function eat() {
+        echo "Eating...";
+    }
+}
+
+class Dog extends Animal {
+    public function makeSound() {
+        echo "Woof!";
+    }
+}
+```
+
+## Umsetzung
+
+Entfernung der Captcha und der E-Mail Verifikation
+
+![This is an alt text.](/_pictures/entfernung.png)
+
+Um die Captcha und die E-Mail Verifikation zu entfernen habe ich einen Teil vom Code im "RegisterController" und im "RegisterModel" entfernt.
