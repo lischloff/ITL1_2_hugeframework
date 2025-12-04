@@ -96,3 +96,6 @@ Entfernung der Captcha und der E-Mail Verifikation
 ![This is an alt text.](/_pictures/entfernung.png)
 
 Um die Captcha und die E-Mail Verifikation zu entfernen habe ich einen Teil vom Code im "RegisterController" und im "RegisterModel" entfernt.
+
+![This is an alt text.](/_pictures/user_anlegen_admin.png)
+Dann wurde das Register Formualr aus dem Login-Bereich entfernt und ist nun über einem Button im Admin-Account aufrufbar.

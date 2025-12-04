@@ -7,6 +7,8 @@
     <div class="login-box" style="width: 50%; display: block;">
         <h2>Register a new account</h2>
 
+        <?php if(Session::get('user_account_type') == 7): ?>
+
         <!-- register form -->
         <form method="post" action="<?php echo Config::get('URL'); ?>register/register_action">
             <!-- the user name input field uses a HTML5 pattern check -->
@@ -26,6 +28,10 @@
 
             <input type="submit" value="Register" />
         </form>
+
+        <?php else: ?>
+            <p>Nur Administratoren können neue Benutzer anlegen.</p>
+        <?php endif; ?>
     </div>
 </div>
 <div class="container">
