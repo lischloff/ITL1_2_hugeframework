@@ -89,7 +89,7 @@ class Dog extends Animal {
 }
 ```
 
-## Umsetzung
+## Umsetzung - Aufgabe 6
 
 Entfernung der Captcha und der E-Mail Verifikation
 
@@ -100,3 +100,23 @@ Um die Captcha und die E-Mail Verifikation zu entfernen habe ich einen Teil vom 
 ![Register Button entfernt](/_pictures/entfernt_register_button.png)
 ![User anlegen über Admin Account.](/_pictures/user_anlegen_admin.png)
 Dann wurde das Register Formualr aus dem Login-Bereich entfernt und ist nun über einem Button im Admin-Account aufrufbar.
+
+
+
+## Umsetzung - Aufgabe 7
+
+Erstellung der Tabelle für die User Gruppen
+
+![Erstellung Tabelle](/_pictures/erstellung_tabelle.png)
+
+Überprüfung, ob die Rollen angezeigt werden
+
+![Rollen angezeigt](/_pictures/rollen.png)
+
+Bearbeitung der Rollen möglich
+![Berarbeitun möglich](/_pictures/erfolgreich_rollen_bearbeiten.png)
+
+Und noch js-table eingefügt für das Styling.
+
+![Fertig](/_pictures/fertig.png)
+

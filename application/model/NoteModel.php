@@ -22,22 +22,47 @@ class NoteModel
         return $query->fetchAll();
     }
 
-    /**
-     * Get a single note
-     * @param int $note_id id of the specific note
-     * @return object a single object (the result)
-     */
-    public static function getNote($note_id)
-    {
-        $database = DatabaseFactory::getFactory()->getConnection();
+ /**
+ * Holt eine einzelne Notiz für den aktuellen Benutzer über MySQLi.
+ *
+ * @param int $note_id ID der Notiz
+ * @return object|null Gibt das Notiz-Objekt zurück oder null, wenn nicht gefunden
+ */
+public static function getNoteMysqli($note_id)
+{
+    // MySQLi-Verbindung aus der DatabaseFactory holen
+    $database = DatabaseFactory::getFactory()->getMysqliConnection();
 
-        $sql = "SELECT user_id, note_id, note_text FROM notes WHERE user_id = :user_id AND note_id = :note_id LIMIT 1";
-        $query = $database->prepare($sql);
-        $query->execute(array(':user_id' => Session::get('user_id'), ':note_id' => $note_id));
+    // SQL-Abfrage vorbereiten
+    $sql = "SELECT user_id, note_id, note_text
+            FROM notes
+            WHERE user_id = ? AND note_id = ?
+            LIMIT 1";
 
-        // fetch() is the PDO method that gets a single result
-        return $query->fetch();
+    // Prepared Statement erstellen
+    if ($stmt = $database->prepare($sql)) {
+
+        // Aktuelle User-ID holen
+        $user_id = Session::get('user_id');
+
+        // Parameter an das Statement binden (zwei Integer)
+        $stmt->bind_param("ii", $user_id, $note_id);
+
+        // Statement ausführen
+        $stmt->execute();
+
+        // Ergebnis abrufen
+        $result = $stmt->get_result();
+
+        // Ein einzelnes Objekt zurückgeben oder null, wenn nichts gefunden
+        return $result ? $result->fetch_object() : null;
     }
+
+    // Falls das Statement nicht erstellt werden konnte
+    return null;
+}
+
+
 
     /**
      * Set a note (create a new one)

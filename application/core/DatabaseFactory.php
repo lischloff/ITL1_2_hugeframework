@@ -24,6 +24,8 @@ class DatabaseFactory
     private static $factory;
     private $database;
 
+     private $mysqli; 
+
     public static function getFactory()
     {
         if (!self::$factory) {
@@ -61,4 +63,44 @@ class DatabaseFactory
         }
         return $this->database;
     }
+
+/**
+ * Erstellt oder gibt die bestehende MySQLi-Datenbankverbindung zurück.
+ *
+ * @return mysqli Die MySQLi-Verbindung
+ */
+public function getMysqliConnection()
+{
+    // Prüfen, ob die Verbindung bereits existiert
+    if (!isset($this->mysqli)) {
+
+        // Fehler bei MySQLi als Exceptions melden
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+        try {
+            // Neue MySQLi-Verbindung erstellen
+            $this->mysqli = new mysqli(
+                Config::get('DB_HOST'),  // Host
+                Config::get('DB_USER'),  // Benutzername
+                Config::get('DB_PASS'),  // Passwort
+                Config::get('DB_NAME'),  // Datenbankname
+                Config::get('DB_PORT')   // Port
+            );
+
+            // Zeichensatz für die Verbindung setzen
+            $this->mysqli->set_charset(Config::get('DB_CHARSET'));
+
+        } catch (Exception $e) {
+            // Fehler abfangen und Meldung ausgeben
+            echo "MySQLi connection cannot be established.<br>";
+            echo "Error code: " . $e->getCode();
+            exit;
+        }
+    }
+
+    // Bestehende oder neue Verbindung zurückgeben
+    return $this->mysqli;
 }
+
+}
+
