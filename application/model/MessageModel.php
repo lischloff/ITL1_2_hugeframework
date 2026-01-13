@@ -126,7 +126,7 @@ public static function getConversation($userId, $partnerId)
             FROM messages
             WHERE sender_id = :me OR empfaenger_id = :me
         ";
-        // Führt ein SQL-Query mit einem Platzhalter :me aus und gibt alle Ergebnisse als eindimensionales Array zurück
+        // Führt ein SQL-Query mit einem Platzhalter :me aus 
         $query = self::db()->prepare($sql);
         $query->execute([':me' => $userId]);
 
