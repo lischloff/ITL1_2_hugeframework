@@ -36,24 +36,28 @@ class MessageController extends Controller
         MessageModel::markAsRead($partnerId, $myId);
     }
 
-    // Sendet eine neue Nachricht
-    public function send()
-    {
-        // Prüfen, ob benötigte POST-Daten vorhanden sind
-        if (empty($_POST['receiver_id']) || empty($_POST['message_text'])) {
-            Session::add('feedback_negative', 'Ungültige Anfrage');
-            Redirect::to('message');
-        }
-
-        // Nachricht speichern
-        MessageModel::sendMessage(
-            Session::get('user_id'),     // Absender
-            $_POST['receiver_id'],       // Empfänger
-            $_POST['message_text']       // Nachricht
-        );
-
-        // Zur Unterhaltung weiterleiten
-        Redirect::to('message/show/' . $_POST['receiver_id']);
+  // Sendet eine neue Nachricht
+public function send()
+{
+    // Prüfen, ob die nötigen POST-Daten vorhanden sind (Empfänger und Nachricht)
+    if (empty($_POST['receiver_id']) || empty($_POST['message_text'])) {
+        // Fehlermeldung in die Session speichern
+        Session::add('feedback_negative', 'Ungültige Anfrage');
+        // Benutzer zurück zur Nachrichtenübersicht weiterleiten
+        Redirect::to('message');
     }
+
+    // Nachricht über das MessageModel speichern
+    MessageModel::sendMessage(
+        Session::get('user_id'),     // ID des aktuellen Benutzers (Absender)
+        $_POST['receiver_id'],       // ID des Empfängers
+        $_POST['message_text']       // Text der Nachricht
+    );
+
+    // Nach dem Senden zur Unterhaltung des Empfängers weiterleiten
+     // - Verhindert, dass die Nachricht beim Reload erneut gesendet wird
+    Redirect::to('message/show/' . $_POST['receiver_id']);
+}
+
 
 }
