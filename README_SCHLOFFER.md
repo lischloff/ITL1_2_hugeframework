@@ -120,3 +120,14 @@ Und noch js-table eingefügt für das Styling.
 
 ![Fertig](/_pictures/fertig.png)
 
+
+## Umsetzung - Aufgabe 8 
+
+Erstellung des Messager
+
+Diese Aufgabe war definitiv herausfordenter als die anderen. 
+
+Begonnen haben wir damit, eine Tabelle mit den Konversationen zu erstellen. 
+
+Beim Header haben wir oben einen weiteren Button eingefügt, um eben auf den Messager zu zugreifen. 
+
