@@ -4,8 +4,7 @@
 
     <!-- Box für den gesamten Chatbereich -->
     <div class="box">
-        <!-- Feedback-Ausgabe (Fehler oder Erfolgsmeldungen) -->
-        <?php $this->renderFeedbackMessages(); ?>
+
 
         <!-- Chatfenster mit Scrollfunktion -->
         <div class="chat-window" style="max-height:400px; overflow-y:auto; border:1px solid #ccc; padding:10px;">
