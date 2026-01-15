@@ -153,4 +153,8 @@ return array(
     'EMAIL_VERIFICATION_FROM_NAME' => 'My Project',
     'EMAIL_VERIFICATION_SUBJECT' => 'Account activation for PROJECT XY',
     'EMAIL_VERIFICATION_CONTENT' => 'Please click on this link to activate your account: ',
+
+    define('RECAPTCHA_SITE_KEY', '6Lf_XkksAAAAAG6Tw1-Ht80NJIrYz_kvwt_-zfyO'),
+    define('RECAPTCHA_SECRET_KEY', '6Lf_XkksAAAAAIJcZHKiYJbsRsKDk9RfCC-MI8iL'),
+
 );

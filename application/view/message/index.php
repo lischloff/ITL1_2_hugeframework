@@ -3,8 +3,7 @@
 
     <div class="box">
 
-        <!-- Gibt Systemmeldungen aus (z.B. Fehler oder Erfolgsmeldungen) -->
-        <?php $this->renderFeedbackMessages(); ?>
+
 
         <h3>Ihre Unterhaltungen</h3>
 
